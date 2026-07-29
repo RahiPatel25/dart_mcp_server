@@ -179,6 +179,36 @@ If you receive project information (Flutter version, dependencies, architecture,
 - Generated files (`.g.dart`, `.freezed.dart`, `.mocks.dart`, `.config.dart`) are automatically ignored.
 - If you modify the MCP server code, rebuild the executable and reconnect/restart your MCP session.
 
+## Managing Multiple Flutter Projects
+
+The MCP server is designed to analyze **one Flutter project per connection**.
+
+If you work with multiple Flutter projects, it is recommended to connect and use **one project at a time**. Connecting multiple projects simultaneously can load multiple MCP servers and tools into the AI session, which may:
+
+- Increase the number of available tools
+- Make it harder to identify the correct MCP server
+- Increase the chance of running a command against the wrong project
+
+Before using MCP tools, check your active server connections:
+
+```bash
+claude mcp list
+```
+
+If you want to disconnect a specific project/server, remove it using:
+
+```bash
+claude mcp remove <server-name>
+```
+
+Example:
+
+```bash
+claude mcp remove YOUR_MCP_SERVER_NAME
+```
+
+You can reconnect the required Flutter project whenever you need it.
+
 ---
 
 # 8. Current Status
